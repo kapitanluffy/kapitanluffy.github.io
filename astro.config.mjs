@@ -7,5 +7,6 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://kapitanluffy.github.io',
   integrations: [tailwind(), compress(), robotsTxt(), mdx()]
 });
