@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  desc: string;
+  frontmatter?: Props;
+}
+
+const { title, desc } = Astro.props.frontmatter || Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={desc} />
+
+    {/* Open Graph Facebook  */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+
+    {/* Twitter */}
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-l/bg dark:bg-d/bg antialiased w-full h-full p-4 md:p-0">
+    <div
+      class="w-full m-auto max-w-xl min-h-screen flex flex-col justify-center items-start gap-8"
+    >
+      <main class="space-y-4">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

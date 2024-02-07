@@ -1,0 +1,14 @@
+---
+import Prose from '../components/Prose.astro';
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+const content = await getEntry('pages', 'index');
+const { Content } = await content.render();
+---
+
+<Layout title={content.data.title} desc=''>
+  <Prose>
+    <Content />
+  </Prose>
+</Layout>
